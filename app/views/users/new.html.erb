@@ -1,0 +1,22 @@
+<h2> Регистрация пользователя </h2>
+
+<%= form_for :user, url: users_path do |f| %>
+<p>
+Имя<br>
+<%= f.text_field :name %>
+</p>
+
+<p>
+E-mail<br>
+<%= f.text_field :email %>
+</p>
+
+<p>
+Пароль<br>
+<%= f.text_field :password %>
+</p>
+
+<p>
+<%= f.submit %>
+</p>
+<% end %>
