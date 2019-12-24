@@ -1,6 +1,6 @@
 <h2> Редактирование пользователя </h2>
 
-<%= form_for :user, url: user_path(@user), method: :patch do |f| %>
+<%= form_for :user, url: admin_user_path(@user), method: :patch do |f| %>
 <p>
 Имя<br>
 <%= f.text_field :name %>
