@@ -1,4 +1,10 @@
-<h1>Пользователи</h1>
-<% @users.each do |user| %>
-    <h2><%= user.name %> </h2>
+<% if user_signed_in? %>
+ <h1>Пользователи</h1>
+  <% @users.each do |user| %>
+   <h2><%= user.email %> - <%= user.name %> </h2>
+   <%= link_to 'Открыть', user_path(user) %>
+   <%= link_to 'Редактировать', edit_user_path(user) %>
+   <%= link_to 'Удалить', user_path(user), method: :delete, data: { confirm: "Вы уверены?" }%>
+
+  <% end %>
 <% end %>
