@@ -1,22 +1,21 @@
 <h2> Редактирование пользователя </h2>
 
 <%= form_for :user, url: admin_user_path(@user), method: :patch do |f| %>
-<p>
-Имя<br>
-<%= f.text_field :name %>
-</p>
+ <p>
+  Имя<br>
+  <%= f.text_field :name %>
+ </p>
 
-    <p>
-    E-mail<br>
-    <%= f.text_field :email %>
-    </p>
+ <p>
+  E-mail<br>
+  <%= f.text_field :email %>
+ </p>
+ <p>
+  Пароль<br>
+  <%= f.password_field :password %>
+ </p>
 
-    <p>
-    Пароль<br>
-    <%= f.password_field :password %>
-    </p>
-
-    <p>
-    <%= f.submit %>
-    </p>
-    <% end %>
+ <p>
+  <%= f.submit %>
+ </p>
+<% end %>
