@@ -1,5 +1,4 @@
-<% if user_signed_in? %>
-    <h2> Редактирование пользователя </h2>
+<h2> Редактирование пользователя </h2>
 
 <%= form_for :user, url: admin_user_path(@user), method: :patch do |f| %>
 <p>
@@ -14,13 +13,10 @@
 
     <p>
     Пароль<br>
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
     </p>
 
     <p>
     <%= f.submit %>
     </p>
     <% end %>
-<% else %>
-    <h1>Пожалуйста, авторизуйтесь</h1>
-<% end %>

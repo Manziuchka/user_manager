@@ -11,9 +11,13 @@
 
   <body>
    <% if user_signed_in? %>
+    <%= link_to 'Начальная страница', home_path %>
      <li class="nav-item">
         <%= link_to "Выход", destroy_user_session_path, method: :delete, class: "nav-link" %>
       </li>
+     <% if (current_user.admin == true) %>
+       <%= link_to 'Создать пользователя', new_admin_user_path %>
+     <% end %>
      <% else %>
       <li class="nav-item">
         <%= link_to "Вход", new_user_session_path, class: "nav-link" %>

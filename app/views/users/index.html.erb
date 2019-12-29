@@ -1,10 +1,16 @@
 <% if user_signed_in? %>
  <h1>Пользователи</h1>
   <% @users.each do |user| %>
-   <h2><%= user.email %> - <%= user.name %> </h2>
-   <%= link_to 'Открыть', user_path(user) %>
-   <%= link_to 'Редактировать', edit_admin_user_path(user) %>
-   <%= link_to 'Удалить', admin_user_path(user), method: :delete, data: { confirm: "Вы уверены?" }%>
-
+  <h2>
+  <% if (user.admin == true) %>
+  [ADMIN]
+  <% end %>
+   <%= user.email %> - <%= user.name %> </h2>
+   <%= link_to 'Просмотр', user_path(user) %>
+   <% if (current_user.admin == true) %>
+     <%= link_to 'Редактировать', edit_admin_user_path(user) %>
+     <%= link_to 'Удалить', admin_user_path(user), method: :delete, data: { confirm: "Вы уверены?" }%>
+    <% end %>
+    
   <% end %>
 <% end %>

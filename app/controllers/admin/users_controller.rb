@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
-
+  before_action :check_admin_status
     def new
         @user = User.new
     end
@@ -38,5 +38,11 @@ class Admin::UsersController < ApplicationController
 
     def user_params
         params.require(:user).permit(:name, :email, :password)
+    end
+
+    def check_admin_status
+      if (current_user.admin == false)
+        redirect_to :home
+      end
     end
 end
