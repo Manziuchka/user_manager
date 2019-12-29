@@ -1,6 +1,6 @@
 <h2> Создать пользователя </h2>
 
-<%= form_for :user, url: admin_users_path do |f| %>
+<%= form_for :user, html: { multipart: true }, url: admin_users_path do |f| %>
  <p>
   Имя<br>
   <%= f.text_field :name %>
@@ -10,10 +10,14 @@
   E-mail<br>
   <%= f.text_field :email %>
  </p>
-
+ 
  <p>
   Пароль<br>
   <%= f.password_field :password %>
+ </p>
+
+ <p>
+  <%= f.file_field :avatar %>
  </p>
 
  <p>

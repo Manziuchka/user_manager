@@ -5,6 +5,7 @@
   <% if (user.admin == true) %>
   [ADMIN]
   <% end %>
+  <%= image_tag user.avatar.url(:thumb), class: 'img-show' if user.avatar? %>
    <%= user.email %> - <%= user.name %> </h2>
    <%= link_to 'Просмотр', user_path(user) %>
    <% if (current_user.admin == true) %>
