@@ -6,6 +6,6 @@ class User < ApplicationRecord
          :rememberable,
          :validatable
 
-  validates :password, presence: true
+  
   validates :email, presence: true, uniqueness: true
 end

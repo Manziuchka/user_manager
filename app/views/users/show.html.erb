@@ -1,11 +1,42 @@
 <% if user_signed_in? %>
-  <h1><%= @user.name %></h1>
-  <p><%= @user.email %></p>
-  <%= image_tag @user.avatar.url(:thumb), class: 'img-show' if @user.avatar? %>
-  <% if (current_user.admin == true) %>
-    <%= link_to 'Редактировать', edit_admin_user_path(@user) %>
-    <%= link_to 'Удалить', user_path(@user), method: :delete, data: { confirm: "Вы уверены?" }%>
-  <% end %>
+ <div class="col">
+        <div class="row d-lg-block" style="text-align:center;">
+        <% if @user.avatar?%>
+         <%= image_tag @user.avatar.url(:thumb), class: 'img-show' %>
+        <% else %>
+         <svg class="img" width="200" height="250" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#55595c"/></svg>  
+        <% end %>
+        </div>
+        <div class="row flex-column">
+          <h3 class="mb-0 align-self-center"><%= @user.name %></h3>
+          <p class="card-text mb-auto align-self-center"><%= @user.email %></p>
+        </div>
+        <% if (current_user.admin == true) %>
+         <div style="text-align:center;">
+          <span class="btn btn-outline-primary"><%= link_to 'Редактировать', edit_admin_user_path(@user) %></span>
+          <span class="btn btn-outline-primary"><%= link_to 'Удалить', admin_user_path(@user), method: :delete, data: { confirm: "Вы уверены?" }%></span>
+         </div>
+        <% end %>
+      </div>
 <% else %>
     <h1>Пожалуйста, авторизуйтесь</h1>
 <% end %>
+
+<%# 
+<% if user_signed_in? %>
+ <%# <div class="col no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="row d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><%= image_tag @user.avatar.url(:thumb), class: 'img-show' if @user.avatar? %><rect width="100%" height="100%" fill="#55595c"/></svg>
+ <%#        </div>
+        <div class="row p-4 d-flex flex-column position-static">
+          <h3 class="mb-0"><%= @user.name %></h3>
+  <%#         <p class="card-text mb-auto"><%= @user.email %></p>
+  <%#       </div>
+        <% if (current_user.admin == true) %>
+  <%#         <span class="btn btn-outline-primary"><%= link_to 'Редактировать', edit_admin_user_path(@user) %></span>
+  <%#         <span class="btn btn-outline-primary"><%= link_to 'Удалить', user_path(@user), method: :delete, data: { confirm: "Вы уверены?" }%></span>
+  <%#       <% end %>
+  <%#     </div>
+<% else %>
+<%#     <h1>Пожалуйста, авторизуйтесь</h1>
+<% end %><%#  %>

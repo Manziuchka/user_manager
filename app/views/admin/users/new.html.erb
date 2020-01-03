@@ -1,19 +1,18 @@
 <h2> Создать пользователя </h2>
-
 <%= form_for :user, html: { multipart: true }, url: admin_users_path do |f| %>
- <p>
+<p>
   Имя<br>
-  <%= f.text_field :name %>
+  <%= f.text_field(:name, {:class => 'form-control'}) %>
  </p>
 
  <p>
   E-mail<br>
-  <%= f.text_field :email %>
+  <%= f.text_field(:email, {:class => 'form-control'}) %>
  </p>
- 
+
  <p>
   Пароль<br>
-  <%= f.password_field :password %>
+  <%= f.password_field(:password, {:class => 'form-control'}) %>
  </p>
 
  <p>
@@ -21,6 +20,6 @@
  </p>
 
  <p>
-  <%= f.submit %>
+  <%= f.submit({:class => 'btn btn-success'}) %>
  </p>
 <% end %>
