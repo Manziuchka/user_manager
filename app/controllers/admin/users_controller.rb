@@ -34,7 +34,7 @@ class Admin::UsersController < ApplicationController
     @user.destroy
     redirect_to users_path
   end
-  
+
   private
 
   def user_params
