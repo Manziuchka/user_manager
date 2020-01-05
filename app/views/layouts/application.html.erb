@@ -33,16 +33,14 @@
       </nav>
       <span class="btn btn-outline-primary"><%= link_to "Регистрация", new_user_registration_path %></span>
     <% end %>
-</div>
-
-
-
-
-  
-  
-   <p class="notice"><%= notice %></p>
-   <p class="alert"><%= alert %></p>
-   <div class="container">
+    </div>  
+    <div class="container">
+      <% if notice %>
+        <p class="alert alert-success" role="alert"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger" role="alert"><%= alert %></p>
+      <% end %> 
     <%= yield %>
    </div>
   </body>
