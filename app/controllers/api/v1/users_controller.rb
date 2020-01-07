@@ -2,6 +2,7 @@ module Api
     module V1
         class UsersController < ApplicationController
             skip_forgery_protection
+            before_action :authorize_request, except: :create
 
             # GET /api/v1/users
             def index
@@ -28,9 +29,8 @@ module Api
 
             # PATCH /api/v1/users/:id
             def update
-                @user = User.find(params[:id])
-                if @user.update(user_params)
-                    render json: @user, status: :ok
+                if @current_user.update(user_params)
+                    render json: @current_user, status: :ok
                 else
                     render json: { errors: @user.errors.full_messages },
                     status: :unprocessable_entity
