@@ -9,11 +9,6 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <p>
-  Имя<br>
-  <%= f.text_field :name, autofocus: true %>
-  </p>
-
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
