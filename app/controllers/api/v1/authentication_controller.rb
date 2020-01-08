@@ -1,27 +1,20 @@
-module Api
-    module V1
-        class AuthenticationController < ApplicationController
-        protect_from_forgery with: :null_session
-        before_action :authorize_request, except: :login
-    
-        #POST /auth/login
-        def login
-            @user = User.find_by_email(params[:email])
-             if @user.valid_password?(params[:password])
-                token = JsonWebToken.encode(user_id: @user.id)
-                time = Time.now + 24.hours.to_i
-                render json: { token: token, exp: time.strftime("%m-%d-%Y %H:%M"),
-                         email: @user.email }, status: :ok
-            else
-                 render json: { error: 'unauthorized' }, status: :unauthorized
-            end
-        end
+class API::V1::AuthenticationController < ApplicationController
+  protect_from_forgery with: :null_session
 
-    private
-
-    def login_params
-        params.permit(:email, :password)
+  # POST /auth/login
+  def login
+    @user = User.find_by_email(params[:email])
+    if @user.valid_password?(params[:password])
+      token = JsonWebToken.encode(user_id: @user.id)
+      render json: { token: token, email: @user.email }, status: :ok
+    else
+      render json: { error: 'unauthorized' }, status: :unauthorized
     end
-end
-end
+  end
+
+  private
+
+  def login_params
+    params.permit(:email, :password)
+  end
 end
