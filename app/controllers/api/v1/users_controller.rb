@@ -5,20 +5,20 @@ class API::V1::UsersController < ApplicationController
   # GET /api/v1/users
   def index
     @users = User.all
-    render json: @users, status: :ok
+    render :index, status: :ok
   end
 
   # GET /api/v1/users/:id
   def show
     @user = User.find(params[:id])
-    render json: @user, status: :ok
+    render :show, status: :ok
   end
 
   # POST /api/v1/users
   def create
     @user = User.new(user_params)
     if @user.save
-      render json: @user, status: :created
+      render :show, status: :created
     else
       render json: { errors: @user.errors.full_messages },
              status: :unprocessable_entity
@@ -28,7 +28,8 @@ class API::V1::UsersController < ApplicationController
   # PATCH /api/v1/users/:id
   def update
     if @current_user.update(user_params)
-      render json: @current_user, status: :ok
+      @user = @current_user
+      render :show, status: :ok
     else
       render json: { errors: @user.errors.full_messages },
              status: :unprocessable_entity

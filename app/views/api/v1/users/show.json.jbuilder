@@ -1,7 +1,8 @@
 json.user do
   json.call(
     @user,
-    :email
+    :email,
+    :name,
+    :avatar
   )
-  json.token @token
 end
