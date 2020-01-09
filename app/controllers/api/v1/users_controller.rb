@@ -5,13 +5,13 @@ class API::V1::UsersController < ApplicationController
   # GET /api/v1/users
   def index
     @users = User.all
-    render :index, status: :ok
+    render :index
   end
 
   # GET /api/v1/users/:id
   def show
     @user = User.find(params[:id])
-    render :show, status: :ok
+    render :show
   end
 
   # POST /api/v1/users
@@ -29,7 +29,7 @@ class API::V1::UsersController < ApplicationController
   def update
     if @current_user.update(user_params)
       @user = @current_user
-      render :show, status: :ok
+      render :show
     else
       render json: { errors: @user.errors.full_messages },
              status: :unprocessable_entity
