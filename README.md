@@ -1,24 +1,60 @@
-# README
+# Rails-приложение для управления пользователями сайта
+В панели управления можно просматривать, создавать, изменять, удалять пользователей  сайта.
+У пользователей есть следующие атрибуты: имя, уникальный email, пароль, аватар.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Демо: https://secure-fortress-93632.herokuapp.com/
 
-Things you may want to cover:
+##### Логин пользователя  user1@gmail.com пароль 123456
+##### Логин администратора admin@gmail.com пароль adminadmin
 
-* Ruby version
+***
+# API 
+Реализовано API для мобильных приложений со следующими возможностями: 
+- Регистрация по почте и паролю 
+- Получение и редактирование своих данных 
+- Просмотр информации о других пользователях
+- Аутентификация, с помощью JsonWebToken
 
-* System dependencies
+##### _Регистрация:_
 
-* Configuration
+Метод POST, https://secure-fortress-93632.herokuapp.com/api/v1/users
 
-* Database creation
+##### _Вход:_
 
-* Database initialization
+Метод POST, https://secure-fortress-93632.herokuapp.com/api/v1/auth/login
 
-* How to run the test suite
+##### _Редактирование своих данных (доступно после аутентификации):_
 
-* Services (job queues, cache servers, search engines, etc.)
+Метод PUT https://secure-fortress-93632.herokuapp.com/api/v1/users
 
-* Deployment instructions
+##### _Просмотр пользователя (доступен после аутентификации):_
 
-* ...
+Метод GET, https://secure-fortress-93632.herokuapp.com/api/v1/users/:id
+
+##### _Просмотр всех пользователей (доступен после аутентификации):_
+
+Метод GET, https://secure-fortress-93632.herokuapp.com/api/v1/users
+
+
+
+***
+# Запуск
+Склонируйте репозиторий на свой компьютер.
+Установите нужные гемы
+```
+bundle install
+```
+Сделайте миграцию:
+```
+bundle exec rake db:migrate
+```
+Заполните БД тестовыми данными:
+```
+bundle exec rake db:seed
+```
+Выполните команду из корневого каталога проекта 
+```
+rails s
+```
+Затем откройте страницу localhost:3000 в браузере.
+
