@@ -1,25 +1,25 @@
 <h2> Редактирование пользователя </h2>
 <%= form_for :user, html: { multipart: true }, url: admin_user_path(@user), method: :patch do |f| %>
-<p>
-  Имя<br>
-  <%= f.text_field :name, class: 'form-control' %>
- </p>
+  <p>
+    Имя<br>
+    <%= f.text_field :name, class: 'form-control' %>
+  </p>
 
- <p>
-  E-mail<br>
-  <%= f.text_field :email, class: 'form-control' %>
- </p>
+  <p>
+   E-mail<br>
+   <%= f.text_field :email, class: 'form-control' %>
+  </p>
  
- <p>
-  Пароль<br>
-  <%= f.password_field :password, placeholder: "не менее 6 символов", class: 'form-control' %>
- </p>
+  <p>
+    Пароль<br>
+    <%= f.password_field :password, required: "required", placeholder: "не менее 6 символов", class: 'form-control' %>
+  </p>
 
- <p>
-  <%= f.file_field :avatar %>
- </p>
+  <p>
+    <%= f.file_field :avatar %>
+  </p>
 
- <p>
-  <%= f.submit class: 'btn btn-success' %>
- </p>
+  <p>
+    <%= f.submit "Сохранить", class: 'btn btn-success' %>
+   </p>
 <% end %>
