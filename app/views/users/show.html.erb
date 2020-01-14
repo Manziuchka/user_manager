@@ -1,23 +1,23 @@
 <% if user_signed_in? %>
- <div class="col">
-        <div class="row d-lg-block" style="text-align:center;">
-        <% if @user.avatar?%>
-         <%= image_tag @user.avatar.url(:thumb), class: 'img-show' %>
-        <% else %>
-         <svg class="img" width="200" height="250" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#55595c"/></svg>  
-        <% end %>
-        </div>
-        <div class="row flex-column">
-          <h3 class="mb-0 align-self-center"><%= @user.name %></h3>
-          <p class="card-text mb-auto align-self-center"><%= @user.email %></p>
-        </div>
-        <% if (current_user.admin == true) %>
-         <div style="text-align:center;">
-          <span class="btn btn-outline-primary"><%= link_to 'Редактировать', edit_admin_user_path(@user) %></span>
-          <span class="btn btn-outline-primary"><%= link_to 'Удалить', admin_user_path(@user), method: :delete, data: { confirm: "Вы уверены?" }%></span>
-         </div>
-        <% end %>
+  <div class="col">
+    <div class="row d-flex justify-content-center">
+      <% if @user.avatar?%>
+        <%= image_tag @user.avatar.url(:thumb), class: 'img-show' %>
+      <% else %>
+        <svg class="img" width="200" height="250" role="img"><rect width="100%" height="100%" fill="#55595c"></svg>  
+      <% end %>
+    </div>
+    <div class="row flex-column">
+      <h3 class="card-title mb-auto align-self-center"><%= @user.name %></h3>
+      <p class="card-text mb-auto align-self-center"><%= @user.email %></p>
+    </div> 
+    <% if (current_user.admin == true) %>
+      <div style="text-align:center;">
+        <span class="btn btn-outline-primary"><%= link_to 'Редактировать', edit_admin_user_path(@user) %></span>
+        <span class="btn btn-outline-primary"><%= link_to 'Удалить', admin_user_path(@user), method: :delete, data: { confirm: "Вы уверены?" }%></span>
       </div>
+    <% end %>
+  </div>
 <% else %>
   <div class="alert alert-danger" role="alert">
     Пожалуйста, авторизуйтесь
